@@ -16,7 +16,7 @@ namespace Screenshotter.UI
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             //fix for some screenshots to not capture the whole screen
             double dpiX, dpiY;
@@ -37,9 +37,12 @@ namespace Screenshotter.UI
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
                     //Temporarily hide window to avoid capturing it in the screenshot
-                    Dispatcher.Invoke(() => Opacity = 0);
+                    WindowState = WindowState.Minimized; // Minimize the window
+                    await Task.Delay(200);
 
                     g.CopyFromScreen((int)screenLeft, (int)screenTop, 0, 0, new System.Drawing.Size((int)screenWidth, (int)screenHeight));
+
+                    WindowState = WindowState.Normal;
 
                     //Restore the window visibility
                     Dispatcher.Invoke(() => Opacity = 1);

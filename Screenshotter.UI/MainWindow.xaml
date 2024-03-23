@@ -5,9 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Screenshotter.UI"
         mc:Ignorable="d"
-        Title="Screenshotter" Height="450" Width="800">
+        Title="Screenshotter" Height="150" Width="300">
+    <!-- Adjust the size as needed -->
     <Grid>
-        <Button Content="Take a screenshot :)" HorizontalAlignment="Left" Margin="352,217,0,0" VerticalAlignment="Top" Click="Button_Click" />
-        <Label Content="Made by TheNevix" HorizontalAlignment="Left" Margin="0,408,0,0" VerticalAlignment="Top"/>
+        <TabControl>
+            <TabItem Header="Capture">
+                <Grid>
+                    <Button Content="Take a screenshot :)" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="About">
+                <Grid>
+                    <TextBlock Text="Made by TheNevix" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
